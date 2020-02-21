@@ -40,4 +40,11 @@ public class BlobStateBlinking : BlobState
             blob.ChangeState(new BlobStateMoving(blob));
         }
     }
+
+    public override void Leave()
+    {
+        base.Leave();
+        // Increases the score by one when a blob leaves the blinking state.
+        blob.GetComponentInParent<GameController>().Score = 1;
+    }
 }

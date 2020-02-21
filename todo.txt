@@ -12,7 +12,7 @@ Done - Replace the Quintic/Out easing function in BlobStateShrinking with a Quar
 Done - Bug: You can set the blob to "Shrinking" multiple times by clicking on it multiple times. Fix this bug so that the blob can't be set to Shrink while already in the Shrinking state.
 
 Grade B:
-Override the Leave() function in BlobStateBlinking to add 1 point to the score every time a blob leaves the Blinking state.
+Done - Override the Leave() function in BlobStateBlinking to add 1 point to the score every time a blob leaves the Blinking state.
 
 Implement the selection sort algorithm in the RemoveHighestBlobs() function in the GameConroller class.
 
