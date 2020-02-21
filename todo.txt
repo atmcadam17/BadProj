@@ -14,7 +14,7 @@ Done - Bug: You can set the blob to "Shrinking" multiple times by clicking on it
 Grade B:
 Done - Override the Leave() function in BlobStateBlinking to add 1 point to the score every time a blob leaves the Blinking state.
 
-Implement the selection sort algorithm in the RemoveHighestBlobs() function in the GameConroller class.
+Done - Implement the selection sort algorithm in the RemoveHighestBlobs() function in the GameConroller class.
 
 Grade A:
 
