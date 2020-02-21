@@ -18,7 +18,7 @@ Implement the selection sort algorithm in the RemoveHighestBlobs() function in t
 
 Grade A:
 
-Add an extra state to the Blob state machine called BlobStateBlinking. In this state, the blob should blink on and off with a delay of half a second between blinks. This state should be entered after BlobStatePulsing. 
+Done - Add an extra state to the Blob state machine called BlobStateBlinking. In this state, the blob should blink on and off with a delay of half a second between blinks. This state should be entered after BlobStatePulsing. 
 
 Find something else in the code that you could improve. Implement your improvement and leave a comment explaining your changes.
 
