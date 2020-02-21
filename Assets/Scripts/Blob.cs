@@ -33,7 +33,10 @@ public class Blob : MonoBehaviour
     // Change blobs to shrinking state when clicked.
     void OnMouseDown()
     {
-        ChangeState(new BlobStateShrinking(this)); 
+        // I added this if statement.
+        // I'm not sure this is the best way to check this but it works.
+        if(currentState.ToString() != "BlobStateShrinking")
+           ChangeState(new BlobStateShrinking(this));
     }
 
     // Destroy blob gameObject and remove it from master blob list.
