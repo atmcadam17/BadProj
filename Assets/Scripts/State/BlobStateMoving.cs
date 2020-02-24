@@ -41,8 +41,9 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    public override void Enter() // Overriden from base class.
     {
+        //this class need to override the base class, otherwise the code inside this enter class will not be runned. 
         base.Enter(); // Call base class.
 
         curPos = blob.transform.position;
