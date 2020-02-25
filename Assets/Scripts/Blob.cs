@@ -41,6 +41,8 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.AddScore(10);
+        controller.Score = 10;
     }
 }
+
+//"controller.Score = 10" makes it sound like 10 is being set as the score, not being added to it.
