@@ -41,7 +41,7 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    public override void Enter() // Overriden from base class.
     {
         base.Enter(); // Call base class.
 
@@ -50,3 +50,5 @@ public class BlobStateMoving : BlobState
         direction = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)); // Move in random direction.
     }
 }
+
+//Bug Details: BlobStateMoving.Enter() could never be called as BlobState.Enter() was never being overridden, causing the blobs to be incapable of moving or spawning in different places.
