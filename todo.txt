@@ -22,7 +22,7 @@ Grade A:
 
 //Implement the selection sort algorithm in the RemoveHighestBlobs() function in the GameController class.
 
-Find something else in the code that you could improve. Implement your improvement and leave a comment explaining your changes.
+Find something else in the code that you could improve. Implement your improvement and leave a comment explaining your changes. //I disable all the collide and add the function onbecomeinvisible to the blob script. now the blob will destroy itself if it is outside the camera
 
 Note: If you can't get Git working and submit the assignment via NYU classes the highest grade available will be B.
 

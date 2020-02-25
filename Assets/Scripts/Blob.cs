@@ -52,4 +52,10 @@ public class Blob : MonoBehaviour
         Destroy(gameObject);
         
     }
+    void OnBecameInvisible()
+    {
+        //now the bal will destroy itself if it is outside the camera
+        print("out of camera");
+        Kill();
+    }
 }
