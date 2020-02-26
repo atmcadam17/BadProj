@@ -41,7 +41,11 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    /*
+     * This warning was caused by the absense of the override keyword. The Enter function is derived from the Blobstate class where it is virtual.
+     * without the override keyword, this function never gets called so the blobs never move.
+     */
+    public override void Enter() // Overriden from base class.
     {
         base.Enter(); // Call base class.
 
