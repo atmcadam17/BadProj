@@ -67,7 +67,9 @@ public class BlobStateBlinking : BlobState
 
     public override void Leave()
     {
-
+        //Uses new public Controller property to access private controller in Blob
+        //Uses new public setter property to add to score in controller
+        blob.Controller.Score = 1;
     }
 
     public BlobStateBlinking(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
