@@ -8,7 +8,7 @@ using UnityEngine;
 public class Blob : MonoBehaviour
 {
     private BlobState currentState; // Current blob state (unique to each blob)
-    private GameController controller;  // Cached connection to game controller component
+    public GameController controller;  // Cached connection to game controller component
     public bool isShrinking;
 
     void Start()

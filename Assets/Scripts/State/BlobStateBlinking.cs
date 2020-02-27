@@ -7,7 +7,7 @@ public class BlobStateBlinking : BlobState
     private Renderer renderer;
     private bool rendIsActive = true;
     private float timer = 0.0f;
-    public int seconds = 0;
+    public int seconds { get { return (int)(timer % 60); } }//this is an iteration on the code shown below
 
     public BlobStateBlinking(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
     {
@@ -44,7 +44,7 @@ public class BlobStateBlinking : BlobState
             }
         }
         timer += Time.deltaTime;
-        seconds = (int)(timer % 60); //found at https://answers.unity.com/questions/1038757/how-to-make-a-timer-that-counts-up-in-seconds-as-a.html
+        //seconds = (int)(timer % 60); //found at https://answers.unity.com/questions/1038757/how-to-make-a-timer-that-counts-up-in-seconds-as-a.html
         //Debug.Log(seconds);
         //Debug.Log(timer);
         //Debug.Log(rendIsActive);
@@ -52,17 +52,8 @@ public class BlobStateBlinking : BlobState
 
     public void changeRend(bool rendIsOn)
     {
-        if (rendIsOn == true )
-        {
-            renderer.enabled = true;
-            rendIsActive = true;
-
-        }
-        else if (rendIsOn == false)
-        {
-            renderer.enabled = false;
-            rendIsActive = false;
-        }
+        renderer.enabled = rendIsOn;
+        rendIsActive = rendIsOn;
     }
 
     public override void Leave()
