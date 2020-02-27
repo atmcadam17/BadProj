@@ -50,9 +50,16 @@ public class BlobStateBlinking : BlobState
         endTime = Random.Range(minTime, maxTime);
     }
 
-    /*
-     * turns the blob mesh renderer on or off when called 
-     */
+    public override void Leave()
+    {
+        base.Leave();
+
+        GameController gc = blob.GetComponentInParent<GameController>();
+        gc.Score += 1;
+       
+    }
+
+    //turns the blob mesh renderer on or off when called 
     public void blink() 
     {
         if (blinked) mR.enabled = false;
