@@ -10,6 +10,8 @@ public class Blob : MonoBehaviour
     private BlobState currentState; // Current blob state (unique to each blob)
     private GameController controller;  // Cached connection to game controller component
 
+    public bool mouseClick;
+
     void Start()
     {
         ChangeState(new BlobStateMoving(this)); // Set initial state.
@@ -23,7 +25,10 @@ public class Blob : MonoBehaviour
     }
 
     void OnMouseDown() {
-        if (!(currentState is BlobStateShrinking)) ChangeState(new BlobStateShrinking(this));
+        mouseClick = true;
+    }
+    void OnMouseUp() {
+        mouseClick = false;    
     }
 
     // Change state.
@@ -39,7 +44,7 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.AddScore(10);
+        controller.Score = 10;
     }
 
 }

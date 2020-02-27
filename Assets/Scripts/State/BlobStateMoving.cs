@@ -39,6 +39,7 @@ public class BlobStateMoving : BlobState
         {
             blob.ChangeState(new BlobStatePulsing(blob)); // Change to color pulsing state.
         }
+        if (blob.mouseClick) blob.ChangeState(new BlobStateShrinking(blob));
     }
 
     public override void Enter() //There was no override, meaning the Enter beahvior did not run and the direction of blob was not set

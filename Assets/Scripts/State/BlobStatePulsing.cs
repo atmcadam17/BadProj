@@ -39,7 +39,7 @@ public class BlobStatePulsing : BlobState
         {
             blob.ChangeState(new BlobStateMoving(blob));
         }
-
+        if (blob.mouseClick) blob.ChangeState(new BlobStateShrinking(blob));
     }
 
     public override void Enter() // Overriden from base class.

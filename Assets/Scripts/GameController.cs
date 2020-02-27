@@ -26,8 +26,11 @@ public class GameController : MonoBehaviour
     public int Score {
         get { return _score; }
         set {
+            Debug.Log(_score);
+            Debug.Log(value);
             _score += value;
             scoreText.text = _score.ToString();
+
             }
     }
 
