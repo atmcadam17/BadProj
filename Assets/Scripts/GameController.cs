@@ -83,8 +83,16 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < blobList.Count; i++)
         {
             int lowest = i;
+            float lowestValue = float.MaxValue;
 
-            // TODO: Implement selection sort here!
+            for (int j = i; j < blobList.Count; j++)
+            {
+                if (blobList[j].transform.position.y < lowestValue)
+                {
+                    lowestValue = blobList[j].transform.position.y;
+                    lowest = j;
+                }
+            }
 
             // Swap
             Blob temp = blobList[i];
