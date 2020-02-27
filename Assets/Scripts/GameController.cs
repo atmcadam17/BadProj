@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public float blobStartY = 1.0f;
 
     // How often do blobs spawn?
-    private float spawnTimer;
+    //private float spawnTimer;
 
     private int _score; //backing variable for public score
 
@@ -43,7 +43,9 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+        //spawn blobs using a coroutine. i thought it was hard to find something to improve, but i like to use a coroutine for timed things so i implemented one here!
+        //it frees up space in update which would be more useful in a longer script
+        StartCoroutine(SpawnTimer());
     }
 
     
@@ -53,21 +55,6 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             RemoveHighestBlobs();
-        }
-
-
-        // Spawn blobs on timer and add to master list.
-        spawnTimer += Time.deltaTime;
-
-        while (spawnTimer > spawnInterval)
-        {
-            spawnTimer -= spawnInterval;
-            Vector3 startPosOffset = new Vector3(Random.Range(-spawnDistanceMax, spawnDistanceMax),
-                                                 blobStartY,
-                                                 Random.Range(-spawnDistanceMax, spawnDistanceMax));
-            Blob newBlob = Instantiate<Blob>(blobPrefab, transform.position + startPosOffset, Quaternion.identity);
-            newBlob.transform.parent = transform; // Set parent to be this gameObject so that the blobs can find the game controller.
-            blobList.Add(newBlob);
         }
     }
 
@@ -111,6 +98,20 @@ public class GameController : MonoBehaviour
             blobList[i].Kill();
         }
         
+    }
+
+    IEnumerator SpawnTimer()
+    {
+        //spawn blob - taken from update
+        Vector3 startPosOffset = new Vector3(Random.Range(-spawnDistanceMax, spawnDistanceMax),
+                                                blobStartY,
+                                                Random.Range(-spawnDistanceMax, spawnDistanceMax));
+        Blob newBlob = Instantiate<Blob>(blobPrefab, transform.position + startPosOffset, Quaternion.identity);
+        newBlob.transform.parent = transform; // Set parent to be this gameObject so that the blobs can find the game controller.
+        blobList.Add(newBlob);
+
+        yield return new WaitForSeconds(spawnInterval);
+        StartCoroutine(SpawnTimer());
     }
 
 
