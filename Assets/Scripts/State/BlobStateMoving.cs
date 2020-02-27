@@ -41,7 +41,7 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    public override void Enter() //There was no override, meaning the Enter beahvior did not run and the direction of blob was not set
     {
         base.Enter(); // Call base class.
 
