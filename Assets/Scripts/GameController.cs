@@ -26,11 +26,8 @@ public class GameController : MonoBehaviour
     public int Score {
         get { return _score; }
         set {
-            Debug.Log(_score);
-            Debug.Log(value);
             _score += value;
             scoreText.text = _score.ToString();
-
             }
     }
 
@@ -81,7 +78,11 @@ public class GameController : MonoBehaviour
         {
             int lowest = i;
 
-            // TODO: Implement selection sort here!
+            for (int j = i + 1; j < blobList.Count; j++) {
+                if (blobList[i].transform.position.y > blobList[j].transform.position.y) {
+                    lowest = j;
+                }
+            }
 
             // Swap
             Blob temp = blobList[i];

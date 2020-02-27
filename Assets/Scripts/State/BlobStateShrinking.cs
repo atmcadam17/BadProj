@@ -47,8 +47,4 @@ public class BlobStateShrinking : BlobState
         float f = (p - 1);
         return f * f * f * (1 - p) + 1;
     }
-
-    public override void Leave() {
-        
-    }
 }
