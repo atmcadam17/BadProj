@@ -49,6 +49,12 @@ public class BlobStateMoving : BlobState
         endTime = Random.Range(minTime, maxTime);
         direction = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)); // Move in random direction.
     }
+
+    //Reverses the direction of a blob
+    public void ReverseDirection()
+    {
+        direction *= -1;
+    }
 }
 
 //Bug Details: BlobStateMoving.Enter() could never be called as BlobState.Enter() was never being overridden, causing the blobs to be incapable of moving or spawning in different places.

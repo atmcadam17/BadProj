@@ -7,7 +7,18 @@ using UnityEngine;
    to allow the blob to interact with the game world.*/
 public class Blob : MonoBehaviour
 {
+    //Keeps track of how many times a blob can bounce off a wall before being destroyed
+    public int SafeBouncesRemaining = 3;
+
     private BlobState currentState; // Current blob state (unique to each blob)
+    public BlobStateMoving MovingState //Allows a certain value in BlobStateMoving to be altered externally
+    {
+        get
+        {
+            BlobStateMoving movingState = (BlobStateMoving)currentState;
+            return movingState;
+        }
+    }
     private GameController controller;  // Cached connection to game controller component
     public GameController Controller
     {
