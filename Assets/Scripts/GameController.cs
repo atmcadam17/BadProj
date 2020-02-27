@@ -79,6 +79,26 @@ public class GameController : MonoBehaviour
     {
         Debug.Log(blobList.Remove(blob) ? "Blob removed from list" : "Blob error: not removed from list");
     }
+    /*void SelectionSort(int[] values)
+    {
+        for (int i = 0; i < values.Length; i++) // Iterate through array from start to finish.
+        {
+            int lowest = i;
+
+            for (int j = i + 1; j < values.Length; j++) // Find lowest value in unsorted remainder of array.
+            {
+                if (values[j] < values[lowest])
+                {
+                    lowest = j;
+                }
+            }
+
+            // Swap
+            int temp = values[i];
+            values[i] = values[lowest];
+            values[lowest] = temp;
+        }
+    }*/
 
     // Remove the blobs with the highest y values. 
     public void RemoveHighestBlobs()
