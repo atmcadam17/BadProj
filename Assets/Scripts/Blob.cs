@@ -65,8 +65,9 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.Score = 10;
+        controller.Score += 10;
     }
 }
 
 //"controller.Score = 10" makes it sound like 10 is being set as the score, not being added to it.
+//Therefore, it has been changed to "controller.Score += 10", and the rest of the scorekeeping functionality has been appropriately changed to match it

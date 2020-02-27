@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
         set
         {
             //This functionality was taken from AddScore(), which no longer exists as it is no longer needed
-            score += value;
+            score = value;
             scoreText.text = score.ToString();
         }
     }
