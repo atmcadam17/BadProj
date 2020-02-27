@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     // These links must be set in the Inspector.
-    public Blob blobPrefab; 
+    public Blob blobPrefab;
     public Text scoreText; // Link to UI element to display score.
 
     // Control where the blobs spawn.
@@ -22,17 +22,17 @@ public class GameController : MonoBehaviour
     private float spawnTimer;
 
     // Score is added on destroying blobs
-    private int score;
+    public float _score;
 
     // List of all the blobs in the game.
     private List<Blob> blobList = new List<Blob>();
 
     void Start()
     {
-        
+        _score = 0;
     }
 
-    
+
     void Update()
     {
         // On pressing space bar, remove the the half of the list that is highest up in the y-axis.
@@ -57,11 +57,19 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Add and display score.
-    public void AddScore(int scoreToAdd)
+
+    public float Score
     {
-        score += scoreToAdd;
-        scoreText.text = score.ToString();
+        get
+        {
+            return _score;
+        }
+
+        private set
+        {
+            _score = value;
+            scoreText.text = _score.ToString();
+        }
     }
 
     // Remove blob from blob list.
@@ -73,29 +81,40 @@ public class GameController : MonoBehaviour
     // Remove the blobs with the highest y values. 
     public void RemoveHighestBlobs()
     {
+        int lowest;
+
         // Selection sort the list of blobs by y
         for (int i = 0; i < blobList.Count; i++)
         {
-            int lowest = i;
+            lowest = i;
 
-            // TODO: Implement selection sort here!
+            //Selection sort:
+            for(int j = i + 1; j < blobList.Count; j++)
+            {
+                if(blobList[j] = blobList[lowest])
+                {
+                    lowest = j;
+                }
+            }
 
-            // Swap
-            Blob temp = blobList[i];
-            blobList[i] = blobList[lowest];
-            blobList[lowest] = temp;
+            if(lowest != i)
+            {
+                // Swap
+                Blob temp = blobList[i];
+                blobList[i] = blobList[lowest];
+                blobList[lowest] = temp;
+            }
         }
 
         // Remove the 50% of the list with the highest y value.
         int toKill = blobList.Count / 2;
 
         // Iterate backwards through the list to avoid invalidating index after removing blob.
-        for (int i = blobList.Count - 1; i >= toKill; i--) 
+        for (int i = blobList.Count - 1; i >= toKill; i--)
         {
             blobList[i].Kill();
         }
-        
-    }
 
+    }
 
 }
