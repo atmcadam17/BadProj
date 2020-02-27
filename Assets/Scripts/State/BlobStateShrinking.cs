@@ -45,6 +45,6 @@ public class BlobStateShrinking : BlobState
     */
     public float QuinticEaseOut(float k)
     {
-        return 1f + ((k -= 1f) * k * k * k * k);
+        return 1f - ((k -= 1f) * k * k * k * k);
     }
 }
