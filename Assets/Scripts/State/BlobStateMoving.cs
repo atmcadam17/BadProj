@@ -19,6 +19,7 @@ public class BlobStateMoving : BlobState
     private float elapsedTime;
     private float endTime;
     private Vector3 direction;
+    private float gittest;
 
     public BlobStateMoving(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
     {
