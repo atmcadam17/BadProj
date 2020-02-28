@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+ 
     }
 
     
@@ -79,13 +79,21 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < blobList.Count; i++)
         {
             int lowest = i;
-
             // TODO: Implement selection sort here!
+            for (int y = 0; y < blobList.Count; y++)
+            {
+                if (blobList[lowest].transform.position.y >= blobList[y].transform.position.y)
+                {
+                    lowest = y;
+                    // Swap
+                    {
+                        Blob temp = blobList[i];
+                        blobList[i] = blobList[lowest];
+                        blobList[lowest] = temp;
+                    }
+                }
+            }
 
-            // Swap
-            Blob temp = blobList[i];
-            blobList[i] = blobList[lowest];
-            blobList[lowest] = temp;
         }
 
         // Remove the 50% of the list with the highest y value.
