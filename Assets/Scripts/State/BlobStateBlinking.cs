@@ -51,4 +51,9 @@ public class BlobStateBlinking : BlobState
         targetColor = new Color(1,1,1,0); // transparent blink color.
         endTime = 0.5f;
     }
+
+    public override void Leave()
+    {
+        base.Leave();
+    }
 }
