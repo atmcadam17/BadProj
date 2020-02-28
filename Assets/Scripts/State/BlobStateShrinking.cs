@@ -37,7 +37,9 @@ public class BlobStateShrinking : BlobState
     {
         elapsedTime = easeOutTime;
         initialScale = blob.transform.localScale;
+        blob.isShrinking = true;
     }
+        
 
     /* 
     * Easing function taken from Tween.js - Licensed under the MIT license
