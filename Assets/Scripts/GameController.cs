@@ -93,7 +93,15 @@ public class GameController : MonoBehaviour
         {
             int lowest = i;
 
-            // TODO: Implement selection sort here!
+            for (int j = i+1; j < blobList.Count; j++)
+            {
+                float currY = blobList[j].transform.localPosition.y;
+                float smallestY = blobList[lowest].transform.localPosition.y;
+                if (currY < smallestY)
+                {
+                    lowest = j;
+                }
+            }
 
             // Swap
             Blob temp = blobList[i];
