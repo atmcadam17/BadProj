@@ -46,7 +46,7 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.AddScore(10);
+        GameController.Scoring.AddScore(10);
     }
     
     public IEnumerator blink(float blinkTime)

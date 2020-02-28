@@ -55,14 +55,16 @@ public class GameController : MonoBehaviour
             newBlob.transform.parent = transform; // Set parent to be this gameObject so that the blobs can find the game controller.
             blobList.Add(newBlob);
         }
+
+        scoreText.text = score.ToString();
     }
 
     // Add and display score.
-    public void AddScore(int scoreToAdd)
+   /* public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = score.ToString();
-    }
+    }*/
 
     // Remove blob from blob list.
     public void RemoveFromList(Blob blob)
@@ -97,5 +99,29 @@ public class GameController : MonoBehaviour
         
     }
 
+    public class Scoring
+    {
+        private static int score;
+        
 
+        public static int Score
+        {
+            get
+            {
+                return score;
+            }
+            set
+            {
+                score = value ;
+            }
+        }
+
+        public static void AddScore(int scoretoAdd)
+        {
+            Score += scoretoAdd;
+            Debug.Log(Score);
+        }
+
+
+    }
 }
