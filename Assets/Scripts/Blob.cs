@@ -8,13 +8,14 @@ using UnityEngine;
 public class Blob : MonoBehaviour
 {
     private BlobState currentState; // Current blob state (unique to each blob)
-    private GameController controller;  // Cached connection to game controller component
+    public GameController controller;  // Cached connection to game controller component
     public bool isShrinking = false;
-
+    public Renderer rend;
     void Start()
     {
         ChangeState(new BlobStateMoving(this)); // Set initial state.
         controller = GetComponentInParent<GameController>();
+        rend = GetComponent<Renderer>();
 
     }
 
@@ -46,5 +47,14 @@ public class Blob : MonoBehaviour
         controller.RemoveFromList(this);
         Destroy(gameObject);
         controller.AddScore(10);
+    }
+    
+    public IEnumerator blink(float blinkTime)
+    {
+        rend.enabled = false;
+        yield return new WaitForSeconds(blinkTime);
+        rend.enabled = true;
+        yield return new WaitForSeconds(blinkTime);
+
     }
 }

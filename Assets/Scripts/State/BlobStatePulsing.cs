@@ -37,7 +37,7 @@ public class BlobStatePulsing : BlobState
 
         if (elapsedTime > endTime)
         {
-            blob.ChangeState(new BlobStateMoving(blob));
+            blob.ChangeState(new BlobStateBlinking(blob));
         }
 
     }
