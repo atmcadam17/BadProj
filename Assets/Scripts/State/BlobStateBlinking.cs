@@ -27,7 +27,7 @@ public class BlobStateBlinking : BlobState
     
     public override void Leave()
     {
- 
+        GameController.Scoring.AddScore(1);
     }
     
 }
