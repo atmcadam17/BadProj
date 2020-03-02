@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/* This state class is derived from BlobState.
- * In this state, the blob remains motionless and pulses between two colors.*/
-public class BlobStatePulsing : BlobState
+public class BlobStateBlinking : BlobState
 {
     // Colors
     private Color initialColor;
@@ -21,7 +18,7 @@ public class BlobStatePulsing : BlobState
     private float endTime;
 
 
-    public BlobStatePulsing(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
+    public BlobStateBlinking(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
     {
 
     }
@@ -35,9 +32,12 @@ public class BlobStatePulsing : BlobState
         // Return to Moving state after time has elapsed.
         elapsedTime += Time.deltaTime;
 
+        Debug.Log("blink");
+
         if (elapsedTime > endTime)
         {
-            blob.ChangeState(new BlobStateBlinking(blob));
+            blob.ChangeState(new BlobStateMoving(blob));
+            Debug.Log("unblink");
         }
 
     }
@@ -48,7 +48,12 @@ public class BlobStatePulsing : BlobState
 
         renderer = blob.GetComponent<Renderer>(); // Cache the renderer.
         initialColor = renderer.material.GetColor("_Color"); // Store the current color.
-        targetColor = Random.ColorHSV(); // Get a random color.
-        endTime = Random.Range(minTime, maxTime);
+        targetColor = new Color(1,1,1,0); // transparent blink color.
+        endTime = 0.5f;
+    }
+
+    public override void Leave()
+    {
+        base.Leave();
     }
 }

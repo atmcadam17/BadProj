@@ -41,7 +41,9 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    //public void Enter() // Overriden from base class.
+    //the problem with this is that Unity already has a method called "Enter" that this is overriding. basically, it will work, but its confusing
+    public override void Enter()
     {
         base.Enter(); // Call base class.
 

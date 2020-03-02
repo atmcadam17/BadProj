@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,7 +34,16 @@ public class Blob : MonoBehaviour
     // Change blobs to shrinking state when clicked.
     void OnMouseDown()
     {
-        ChangeState(new BlobStateShrinking(this)); 
+        //ChangeState(new BlobStateShrinking(this)); //we don't want this to run while its already running
+        if(currentState.ToString() != "BlobStateShrinking")
+        {
+            ChangeState(new BlobStateShrinking(this));
+        }
+    }
+
+    private BlobState BlobStateShrinking(Blob blob)
+    {
+        throw new NotImplementedException();
     }
 
     // Destroy blob gameObject and remove it from master blob list.
