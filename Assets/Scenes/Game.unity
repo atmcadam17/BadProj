@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -187,6 +187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601093558963146739, guid: 4ee46d959058e43348659336ae12c327,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee46d959058e43348659336ae12c327, type: 3}
@@ -361,6 +366,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601093558963146739, guid: 4ee46d959058e43348659336ae12c327,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee46d959058e43348659336ae12c327, type: 3}
@@ -711,7 +721,7 @@ Transform:
   m_GameObject: {fileID: 994889380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.727059, y: 0.16973, z: 10.83507}
+  m_LocalScale: {x: 31.39, y: 0.16973, z: 20}
   m_Children:
   - {fileID: 1523784252}
   - {fileID: 660867392}
@@ -734,10 +744,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blobPrefab: {fileID: 7578774017854333356, guid: 3c44b4727be194370a0603fa5baf9773,
     type: 3}
+  scoreText: {fileID: 966822712}
   spawnInterval: 1
   spawnDistanceMax: 2
   blobStartY: 1
-  scoreText: {fileID: 966822712}
 --- !u!4 &1037865589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3338155324636274617, guid: 4ee46d959058e43348659336ae12c327,
@@ -883,6 +893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall3
       objectReference: {fileID: 0}
+    - target: {fileID: 6601093558963146739, guid: 4ee46d959058e43348659336ae12c327,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee46d959058e43348659336ae12c327, type: 3}
 --- !u!1001 &2471148863313748771
@@ -951,6 +966,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601093558963146739, guid: 4ee46d959058e43348659336ae12c327,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ee46d959058e43348659336ae12c327, type: 3}
