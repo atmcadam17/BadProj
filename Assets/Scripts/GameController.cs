@@ -23,6 +23,19 @@ public class GameController : MonoBehaviour
 
     // Score is added on destroying blobs
     private int score;
+    public int Score
+    {
+        get
+        {
+            return score;
+        }
+        set
+        {
+            //This functionality was taken from AddScore(), which no longer exists as it is no longer needed
+            score = value;
+            scoreText.text = score.ToString();
+        }
+    }
 
     // List of all the blobs in the game.
     private List<Blob> blobList = new List<Blob>();
@@ -57,13 +70,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Add and display score.
-    public void AddScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-        scoreText.text = score.ToString();
-    }
-
     // Remove blob from blob list.
     public void RemoveFromList(Blob blob)
     {
@@ -77,8 +83,16 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < blobList.Count; i++)
         {
             int lowest = i;
+            float lowestValue = float.MaxValue;
 
-            // TODO: Implement selection sort here!
+            for (int j = i; j < blobList.Count; j++)
+            {
+                if (blobList[j].transform.position.y < lowestValue)
+                {
+                    lowestValue = blobList[j].transform.position.y;
+                    lowest = j;
+                }
+            }
 
             // Swap
             Blob temp = blobList[i];

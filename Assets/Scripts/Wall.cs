@@ -23,7 +23,22 @@ public class Wall : MonoBehaviour
 
         if (collideBlob != null)
         {
-            collideBlob.Kill();
+            //Reverses direction of blob if running into a wall with enough Safe Bounces remaining
+            if (collideBlob.SafeBouncesRemaining > 0)
+            {
+                if (collideBlob.MovingState != null)
+                {
+                    collideBlob.SafeBouncesRemaining--;
+                    collideBlob.MovingState.ReverseDirection();
+                    print("Boing");
+                } else {
+                    print("Not in moving state");
+                }
+            }
+            else
+            {
+                collideBlob.Kill();
+            }
         }
     }
 }
