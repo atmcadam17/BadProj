@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        
+ 
     }
 
     
@@ -55,14 +55,16 @@ public class GameController : MonoBehaviour
             newBlob.transform.parent = transform; // Set parent to be this gameObject so that the blobs can find the game controller.
             blobList.Add(newBlob);
         }
+
+        scoreText.text = score.ToString();
     }
 
     // Add and display score.
-    public void AddScore(int scoreToAdd)
+   /* public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = score.ToString();
-    }
+    }*/
 
     // Remove blob from blob list.
     public void RemoveFromList(Blob blob)
@@ -77,13 +79,21 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < blobList.Count; i++)
         {
             int lowest = i;
-
             // TODO: Implement selection sort here!
+            for (int y = 0; y < blobList.Count; y++)
+            {
+                if (blobList[lowest].transform.position.y >= blobList[y].transform.position.y)
+                {
+                    lowest = y;
+                    // Swap
+                    {
+                        Blob temp = blobList[i];
+                        blobList[i] = blobList[lowest];
+                        blobList[lowest] = temp;
+                    }
+                }
+            }
 
-            // Swap
-            Blob temp = blobList[i];
-            blobList[i] = blobList[lowest];
-            blobList[lowest] = temp;
         }
 
         // Remove the 50% of the list with the highest y value.
@@ -97,5 +107,29 @@ public class GameController : MonoBehaviour
         
     }
 
+    public class Scoring
+    {
+        private static int score;
+        
 
+        public static int Score
+        {
+            get
+            {
+                return score;
+            }
+            set
+            {
+                score = value ;
+            }
+        }
+
+        public static void AddScore(int scoretoAdd)
+        {
+            Score += scoretoAdd;
+            Debug.Log(Score);
+        }
+
+
+    }
 }

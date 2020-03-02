@@ -41,7 +41,7 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    public override void Enter() // Overriden from base class.
     {
         base.Enter(); // Call base class.
 
