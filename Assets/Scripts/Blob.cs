@@ -8,7 +8,7 @@ using UnityEngine;
 public class Blob : MonoBehaviour
 {
     private BlobState currentState; // Current blob state (unique to each blob)
-    private GameController controller;  // Cached connection to game controller component
+    public GameController controller;  // Cached connection to game controller component
 
     void Start()
     {
@@ -41,6 +41,6 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.AddScore(10);
+        controller._score += 10;
     }
 }

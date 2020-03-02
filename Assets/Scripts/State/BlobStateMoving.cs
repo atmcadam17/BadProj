@@ -9,7 +9,10 @@ public class BlobStateMoving : BlobState
 {
     // Sine wave definitions.
     public const float speed = 0.01f;
-    public const float amplitude = 0.5f;
+
+    //IMPROVEMENT: changed the amplitude to be random to make the blobs feel more natural.
+    public float amplitude = Random.Range(0.25f, 0.5f);
+
     public const float sinSpeed = 2.0f;
     public const float minTime = 1.0f;
     public const float maxTime = 5.0f;
@@ -41,7 +44,10 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    //the warning was caused by the function not overriding the enter function from the base class
+    // this caused the inheritance not to function properly as the enter class wasnt being
+    // overriden and setting the new current position, endtime, and direction
+    public override void Enter() // Overriden from base class.
     {
         base.Enter(); // Call base class.
 

@@ -32,12 +32,12 @@ public class BlobStatePulsing : BlobState
         Color lerpedColor = Color.Lerp(initialColor, targetColor, Mathf.PingPong(Time.time, 1.0f));
         renderer.material.SetColor("_Color", lerpedColor);
 
-        // Return to Moving state after time has elapsed.
+        // Return to blinking state after time has elapsed.
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime > endTime)
         {
-            blob.ChangeState(new BlobStateMoving(blob));
+            blob.ChangeState(new BlobStateBlinking(blob));
         }
 
     }
@@ -50,5 +50,10 @@ public class BlobStatePulsing : BlobState
         initialColor = renderer.material.GetColor("_Color"); // Store the current color.
         targetColor = Random.ColorHSV(); // Get a random color.
         endTime = Random.Range(minTime, maxTime);
+    }
+
+    public override void Leave()
+    {
+        base.Leave();// Call base class
     }
 }
