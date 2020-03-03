@@ -22,7 +22,13 @@ public class GameController : MonoBehaviour
     private float spawnTimer;
 
     // Score is added on destroying blobs
-    private int score;
+    private int _score;     // I have changed score to _score to mark it as a backing variable for Score
+    public int Score {      // Score is the front facing property.
+        get { return _score; }  // It gets the value of _score 
+        set { _score += value;  // When you set it actually adds to _score and updates the text element.
+            scoreText.text = _score.ToString();
+        }
+    }
 
     // List of all the blobs in the game.
     private List<Blob> blobList = new List<Blob>();
@@ -57,13 +63,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Add and display score.
-    public void AddScore(int scoreToAdd)
-    {
-        score += scoreToAdd;
-        scoreText.text = score.ToString();
-    }
-
     // Remove blob from blob list.
     public void RemoveFromList(Blob blob)
     {
@@ -76,15 +75,30 @@ public class GameController : MonoBehaviour
         // Selection sort the list of blobs by y
         for (int i = 0; i < blobList.Count; i++)
         {
-            int lowest = i;
+            int lowIdx = i;
+            for(int j = i; j < blobList.Count; j++)
+            {
+                if(blobList[j].transform.position.y < blobList[lowIdx].transform.position.y)
+                {
+                    lowIdx = j;
+                }
+            }
 
-            // TODO: Implement selection sort here!
+            Blob lowVal = blobList[lowIdx];
 
-            // Swap
-            Blob temp = blobList[i];
-            blobList[i] = blobList[lowest];
-            blobList[lowest] = temp;
+            for (int j = lowIdx; j > i; j--)
+            {
+                blobList[j] = blobList[j - 1];
+            }
+            blobList[i] = lowVal;
         }
+
+        string t = "";
+        foreach(Blob b in blobList)
+        {
+            t += b.transform.position.y + " - ";
+        }
+        Debug.Log(t);
 
         // Remove the 50% of the list with the highest y value.
         int toKill = blobList.Count / 2;
