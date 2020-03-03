@@ -8,7 +8,9 @@ using UnityEngine;
 public class Blob : MonoBehaviour
 {
     private BlobState currentState; // Current blob state (unique to each blob)
-    private GameController controller;  // Cached connection to game controller component
+    public GameController controller;  // Cached connection to game controller component
+
+    public bool mouseClick;
 
     void Start()
     {
@@ -22,6 +24,13 @@ public class Blob : MonoBehaviour
         currentState.Run(); // Run state update.
     }
 
+    void OnMouseDown() {
+        mouseClick = true;
+    }
+    void OnMouseUp() {
+        mouseClick = false;    
+    }
+
     // Change state.
     public void ChangeState(BlobState newState)
     {
@@ -30,17 +39,12 @@ public class Blob : MonoBehaviour
         currentState.Enter();
     }
 
-    // Change blobs to shrinking state when clicked.
-    void OnMouseDown()
-    {
-        ChangeState(new BlobStateShrinking(this)); 
-    }
-
     // Destroy blob gameObject and remove it from master blob list.
     public void Kill()
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.AddScore(10);
+        controller.Score = 10;
     }
+
 }
