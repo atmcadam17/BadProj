@@ -19,6 +19,7 @@ public class BlobStateMoving : BlobState
     private float elapsedTime;
     private float endTime;
     private Vector3 direction;
+    private float gittest;
 
     public BlobStateMoving(Blob theBlob) : base(theBlob) // Derived class constructor calls base class constructor.
     {
@@ -41,7 +42,7 @@ public class BlobStateMoving : BlobState
         }
     }
 
-    public void Enter() // Overriden from base class.
+    public override void Enter() // Overriden from base class.
     {
         base.Enter(); // Call base class.
 
