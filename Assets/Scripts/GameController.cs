@@ -58,11 +58,21 @@ public class GameController : MonoBehaviour
     }
 
     // Add and display score.
-    public void AddScore(int scoreToAdd)
+    public int Score
+    {
+        get { return score; }
+        set
+        {
+            score = value;
+            scoreText.text = Score.ToString();
+        }
+    }
+
+    /*public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = score.ToString();
-    }
+    }*/
 
     // Remove blob from blob list.
     public void RemoveFromList(Blob blob)
@@ -79,6 +89,13 @@ public class GameController : MonoBehaviour
             int lowest = i;
 
             // TODO: Implement selection sort here!
+            for (int j = i + 1; j < blobList.Count; j++) // Find lowest value in unsorted remainder of array.
+            {
+                if (blobList[j].transform.position.y < blobList[lowest].transform.position.y)
+                {
+                    lowest = j;
+                }
+            }
 
             // Swap
             Blob temp = blobList[i];

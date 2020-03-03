@@ -7,10 +7,11 @@ using UnityEngine;
 public abstract class BlobState
 {
     protected Blob blob; // The manager that contains the state machine.
+    protected GameController gameController { get { return blob.controller; } }
 
     public abstract void Run(); // This is abstract so it MUST be implemented in derived classes.
     public virtual void Enter() { } // Virtual so can be overriden in derived classes.
-    public virtual void Leave() { }
+    public virtual void Leave() { } 
 
     public BlobState(Blob theBlob) // Constructor that takes an argument.
     {
