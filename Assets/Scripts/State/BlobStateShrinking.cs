@@ -30,6 +30,7 @@ public class BlobStateShrinking : BlobState
         if (elapsedTime < 0.0f)
         {
             blob.Kill(); // Destroy blob
+            blob.IncreaseScore(10); 
         }
     }
 

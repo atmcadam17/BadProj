@@ -52,6 +52,11 @@ public class Blob : MonoBehaviour
     {
         controller.RemoveFromList(this);
         Destroy(gameObject);
-        controller.Score += 10;
+    }
+
+    // Increase the game score.
+    public void IncreaseScore(int scoreIncrease)
+    {
+        controller.Score += scoreIncrease;
     }
 }
