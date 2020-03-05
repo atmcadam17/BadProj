@@ -40,6 +40,12 @@ public class BlobStatePulsing : BlobState
             blob.ChangeState(new BlobStateMoving(blob));
         }
 
+        // Clicked
+        if (blob.Clicked)
+        {
+            blob.ChangeState(new BlobStateShrinking(blob));
+        }
+
     }
 
     public override void Enter() // Overriden from base class.

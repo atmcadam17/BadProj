@@ -10,6 +10,17 @@ public class Blob : MonoBehaviour
     private BlobState currentState; // Current blob state (unique to each blob)
     private GameController controller;  // Cached connection to game controller component
 
+    // Store whether blob has been clicked or not in private backing variable.
+    private bool _clicked;
+
+    public bool Clicked
+    {
+        get // Only a getter is provided, so that only this class can set that the blob was clicked.
+        {
+            return _clicked;
+        }
+    }
+
     void Start()
     {
         ChangeState(new BlobStateMoving(this)); // Set initial state.
@@ -30,10 +41,10 @@ public class Blob : MonoBehaviour
         currentState.Enter();
     }
 
-    // Change blobs to shrinking state when clicked.
+    // When a blob is clicked, the state machine needs to know.
     void OnMouseDown()
     {
-        ChangeState(new BlobStateShrinking(this)); 
+        _clicked = true;
     }
 
     // Destroy blob gameObject and remove it from master blob list.

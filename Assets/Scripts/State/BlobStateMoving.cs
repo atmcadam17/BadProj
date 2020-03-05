@@ -39,6 +39,12 @@ public class BlobStateMoving : BlobState
         {
             blob.ChangeState(new BlobStatePulsing(blob)); // Change to color pulsing state.
         }
+
+        // Clicked
+        if (blob.Clicked)
+        {
+            blob.ChangeState(new BlobStateShrinking(blob));
+        }
     }
 
     public override void Enter() // Overriden from base class.
